@@ -1,0 +1,50 @@
+[project]
+name = "travei-itinerary-suggester"
+version = "0.1.0"
+description = "Smart Travel Itinerary Suggester with LLM"
+authors = [
+    {name = "Erick",email = "edcm.erick@gmail.com"}
+]
+license = {text = "Apache License 2.0"}
+readme = "README.md"
+requires-python = "3.12.9"
+dependencies = [
+    "langchain-core (>=0.3.49,<0.4.0)",
+    "python-dotenv (>=1.1.0,<2.0.0)",
+    "langchain-openai (>=0.3.11,<0.4.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.11.2"
+
+[tool.ruff.lint]
+select=[
+    # Pyflakes
+    "F",
+    # pycodestyle
+    "E",
+    "W",
+    # isort
+    "I",
+    # pep8-naming
+    "N",
+    # pyupgrade
+    "UP",
+    # flake8-todos
+    "TD",
+    # flake8-tidy-imports
+    "TID",
+    # flake8-import-conventions
+    "ICN",
+    # flake8-bugbear
+    "B",
+    # flake8-bandit
+    "S",
+    # flake8-simplify
+    "SIM"
+]
