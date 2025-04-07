@@ -7,7 +7,7 @@ authors = [
 ]
 license = {text = "Apache License 2.0"}
 readme = "README.md"
-requires-python = "3.12.9"
+requires-python = ">=3.12"
 dependencies = [
     "langchain-core (>=0.3.49,<0.4.0)",
     "python-dotenv (>=1.1.0,<2.0.0)",
