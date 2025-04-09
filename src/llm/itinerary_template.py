@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import (
     ChatPromptTemplate,
@@ -10,26 +12,11 @@ from langchain_openai import ChatOpenAI
 from src.llm import TravelAgent
 from src.llm.validations import Validation
 
+current_directory: Path = Path(__file__).parent
+
 
 class ItineraryTemplate:
-    system_template: str = """
-    You are a travel agent who helps users make exciting travel plans.
-
-    The user's request will be denoted by four hashtags. Convert the user's request
-    into a detailed itinerary describing the places they should visit and the things
-    they should do.
-
-    Try to include the specific address of each location.
-
-    Remember to take the user's preferences and timeframe into account, and give them
-    an itinerary that would be fun and doable given their constraints.
-
-    Return the itinerary as a bulleted list with clear start and end locations.
-    Be sure to mention the type of transit for the trip.
-    If specific start and end locations are not given, choose ones that you think are
-    suitable and give specific addresses.
-    Your output must be the list and nothing else.
-    """
+    system_template: str = (current_directory / "system_template.txt").read_text()
 
     human_template: str = "#### {query} ####"
 
