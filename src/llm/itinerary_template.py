@@ -1,4 +1,3 @@
-
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import (
     ChatPromptTemplate,
@@ -8,7 +7,7 @@ from langchain_core.prompts import (
 from langchain_core.runnables import RunnableSequence
 from langchain_openai import ChatOpenAI
 
-from src.llm.travel_agent import TravelAgent
+from src.llm import TravelAgent
 from src.llm.validations import Validation
 
 
