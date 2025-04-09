@@ -38,7 +38,7 @@ class TravelAgent:
         response = chain.invoke(
             {
                 "query": query,
-                "format_instructions":
+                "format_instructions": 
                     self._validation_prompt.parser.get_format_instructions(),
             }
         )
