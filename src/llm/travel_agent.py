@@ -38,20 +38,10 @@ class TravelAgent:
         response = chain.invoke(
             {
                 "query": query,
-                "format_instructions": 
+                "format_instructions":
                     self._validation_prompt.parser.get_format_instructions(),
             }
         )
         t2 = time()
         logging.info(f"Time to validate the request ({round(t2 - t1, 2)})")
         return response
-
-
-if __name__ == "__main__":
-    query = """
-        I want to do a 5 day roadtrip from Earth to Mars.
-        I want to visit Perito Moreno glaciar.
-    """
-    travel_agent = TravelAgent()
-    response = travel_agent.validate_travel(query)
-    logging.info(response)

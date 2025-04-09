@@ -9,9 +9,6 @@ from langchain_core.prompts import (
 from langchain_core.runnables import RunnableSequence
 from langchain_openai import ChatOpenAI
 
-from src.llm import TravelAgent
-from src.llm.validations import Validation
-
 current_directory: Path = Path(__file__).parent
 
 
@@ -33,17 +30,3 @@ class ItineraryTemplate:
 
     def create_chain(self) -> RunnableSequence:
         return self.chat_prompt | self.chat_model | StrOutputParser()
-
-
-if __name__ == "__main__":
-    travel_agent = TravelAgent()
-    query = """
-        I want to do a 5 day roadtrip from Monteria to Bogota.
-        I want to visit some interesting restaurantes in between.
-    """
-    response: Validation = travel_agent.validate_travel(query)
-    if response.plan_is_valid == "yes":
-        itinerary_template = ItineraryTemplate()
-        chain = itinerary_template.create_chain()
-        response = chain.invoke({"query": query})
-        print(response)

@@ -38,29 +38,3 @@ class MappingTemplate:
             | self._chat_model
             | self._parser
         )
-
-
-if __name__ == "__main__":
-    mapping_template = MappingTemplate()
-    chain = mapping_template._create_agent_chain()
-    itinerary: str = """
-    Itinerary for a 2-day driving trip within London:
-- Day 1:
-- Start at Buckingham Palace (The Mall, London SW1A 1AA)
-- Visit the Tower of London (Tower Hill, London EC3N 4AB)
-- Explore the British Museum (Great Russell St, Bloomsbury, London WC1B 3DG)
-- Enjoy shopping at Oxford Street (Oxford St, London W1C 1JN)
-- End the day at Covent Garden (Covent Garden, London WC2E 8RF)
-- Day 2:
-- Start at Westminster Abbey (20 Deans Yd, Westminster, London SW1P 3PA)
-- Visit the Churchill War Rooms (Clive Steps, King Charles St, London SW1A 2AQ)
-- Explore the Natural History Museum (Cromwell Rd, Kensington, London SW7 5BD)
-- End the trip at the Tower Bridge (Tower Bridge Rd, London SE1 2UP)
-    """
-    response = chain.invoke(
-        {
-            "format_instructions": mapping_template._parser.get_format_instructions(),
-            "agent_suggestion": itinerary,
-        }
-    )
-    print(response)
