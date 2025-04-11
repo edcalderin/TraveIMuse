@@ -10,13 +10,13 @@ from langchain_core.prompts import (
 from langchain_core.runnables import RunnablePassthrough, RunnableSequence
 from langchain_openai import ChatOpenAI
 
-from src.locations import Trip
+from src.locations.trip import Trip
 
 current_directory: Path = Path(__file__).parent
 
 
 @dataclass(frozen=True)
-class MappingTemplate:
+class MappingAgent:
     _system_template: str = (current_directory / "system_template.txt").read_text()
     _human_template: str = """#### {agent_suggestion} ####"""
 
@@ -28,10 +28,10 @@ class MappingTemplate:
     )
     _chat_model = ChatOpenAI(model="gpt-4o", temperature=0.2)
 
-    def _create_agent_chain(self) -> RunnableSequence:
+    def create_chain(self) -> RunnableSequence:
         return (
             {
-                "format_instructions": RunnablePassthrough(),
+                "format_instructions": lambda _: self._parser.get_format_instructions(),
                 "agent_suggestion": RunnablePassthrough(),
             }
             | self._chat_prompt

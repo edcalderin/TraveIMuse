@@ -1,1 +1,1 @@
-from src.locations.trip import Trip as Trip
+from .mapping_agent import MappingAgent as MappingAgent
