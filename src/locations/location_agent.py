@@ -1,3 +1,4 @@
+import logging
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -12,12 +13,16 @@ from langchain_openai import ChatOpenAI
 
 from src.locations.trip import Trip
 
+logging.basicConfig(level=logging.INFO)
+
 current_directory: Path = Path(__file__).parent
 
 
 @dataclass(frozen=True)
-class MappingAgent:
-    _system_template: str = (current_directory / "system_template.txt").read_text()
+class LocationAgent:
+    _system_template: str = (
+        current_directory / "location_system_template.txt"
+    ).read_text()
     _human_template: str = """#### {agent_suggestion} ####"""
 
     _parser = PydanticOutputParser(pydantic_object=Trip)
@@ -29,6 +34,7 @@ class MappingAgent:
     _chat_model = ChatOpenAI(model="gpt-4o", temperature=0.2)
 
     def create_chain(self) -> RunnableSequence:
+        logging.info("Itinerary chain")
         return (
             {
                 "format_instructions": lambda _: self._parser.get_format_instructions(),

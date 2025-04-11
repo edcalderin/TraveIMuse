@@ -1,2 +1,2 @@
-from src.itinerary.itinerary_template import ItineraryTemplate as ItineraryTemplate
-from src.itinerary.travel_agent import TravelAgent as TravelAgent
+from .itinerary_agent import ItineraryAgent as ItineraryAgent
+from .validation_agent import ValidationAgent as ValidationAgent

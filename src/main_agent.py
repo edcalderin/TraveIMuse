@@ -2,19 +2,19 @@ from dataclasses import dataclass
 
 from langchain_core.runnables import RunnableSequence
 
-from src.itinerary import ItineraryTemplate
-from src.locations import MappingAgent
+from src.itinerary import ItineraryAgent
+from src.locations import LocationAgent
 
 
 @dataclass(frozen=True)
 class ItinerarySuggestion:
-    _itinerary_template: ItineraryTemplate = ItineraryTemplate()
-    _mapping_agent: MappingAgent = MappingAgent()
+    _itinerary_agent: ItineraryAgent = ItineraryAgent()
+    _location_agent: LocationAgent = LocationAgent()
 
     def create_chain(self) -> RunnableSequence:
-        itinerary_chain: RunnableSequence = self._itinerary_template.create_chain()
-        mapping_chain: RunnableSequence = self._mapping_agent.create_chain()
-        return {"agent_suggestion": itinerary_chain} | mapping_chain
+        itinerary_chain: RunnableSequence = self._itinerary_agent.create_chain()
+        location_chain: RunnableSequence = self._location_agent.create_chain()
+        return {"agent_suggestion": itinerary_chain} | location_chain
 
 
 if __name__ == "__main__":

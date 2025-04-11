@@ -1,1 +1,1 @@
-from .mapping_agent import MappingAgent as MappingAgent
+from .location_agent import LocationAgent as LocationAgent
