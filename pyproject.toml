@@ -13,7 +13,9 @@ dependencies = [
     "python-dotenv (>=1.1.0,<2.0.0)",
     "langchain-openai (>=0.3.11,<0.4.0)",
     "googlemaps (>=4.10.0,<5.0.0)",
-    "folium (>=0.19.5,<0.20.0)"
+    "folium (>=0.19.5,<0.20.0)",
+    "gradio (>=5.25.0,<6.0.0)",
+    "leafmap (>=0.43.5,<0.44.0)"
 ]
 
 
