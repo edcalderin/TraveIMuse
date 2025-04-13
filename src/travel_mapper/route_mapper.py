@@ -5,6 +5,7 @@ from datetime import datetime
 import folium
 from branca.element import Figure
 
+from src.agents.locations import Trip
 from src.travel_mapper.constants import MAPS_DUMP_DIR
 
 logging.basicConfig(level=logging.INFO)
@@ -32,7 +33,7 @@ class RouteMapper:
         """
         self.map_name = self.auto_generate_map_name(list_of_places)
 
-    def auto_generate_map_name(self, list_of_places):
+    def auto_generate_map_name(self, list_of_places: Trip):
         """
 
         Parameters
@@ -45,8 +46,8 @@ class RouteMapper:
         """
         return "{}_{}_{}_trip.html".format(
             str(datetime.today().date()).replace("-", "_"),
-            list_of_places["start"].split(",")[0].replace(" ", "_"),
-            list_of_places["end"].split(",")[0].replace(" ", "_"),
+            list_of_places.start.split(",")[0].replace(" ", "_"),
+            list_of_places.end.split(",")[0].replace(" ", "_"),
         )
 
     def generate_and_display(self, directions_list, route_dict):

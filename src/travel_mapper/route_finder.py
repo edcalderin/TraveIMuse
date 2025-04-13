@@ -5,10 +5,14 @@ from datetime import datetime
 
 import googlemaps
 import numpy as np
+from dotenv import load_dotenv
 from googlemaps.convert import decode_polyline
 
 from src.agents.locations import Trip
 from src.travel_mapper.route_mapper import RouteMapper
+
+load_dotenv()
+print(os.getenv("GOOGLE_MAPS_API_KEY"))
 
 
 class RouteFinder:
