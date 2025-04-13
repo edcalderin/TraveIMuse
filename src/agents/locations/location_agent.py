@@ -11,7 +11,7 @@ from langchain_core.prompts import (
 from langchain_core.runnables import RunnablePassthrough, RunnableSequence
 from langchain_openai import ChatOpenAI
 
-from src.locations.trip import Trip
+from src.agents.locations.trip import Trip
 
 logging.basicConfig(level=logging.INFO)
 

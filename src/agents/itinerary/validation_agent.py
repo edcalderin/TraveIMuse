@@ -48,9 +48,9 @@ class ValidationAgent:
         return (
             {
                 "query": RunnablePassthrough(),
-                "format_instructions": self._parser.get_format_instructions(),
+                "format_instructions": lambda _: self._parser.get_format_instructions(),
             }
-            | self._validation_prompt.chat_prompt
+            | self._chat_prompt
             | self._chat_model
             | self._parser
         )
