@@ -3,7 +3,9 @@ import gradio as gr
 from gradio_app.constants import EXAMPLE_QUERY
 from gradio_app.travel_mapper import TravelMapperForUI
 from gradio_app.utils import generate_generic_leafmap
+from dotenv import load_dotenv
 
+load_dotenv()
 
 def main():
     travel_mapper = TravelMapperForUI()

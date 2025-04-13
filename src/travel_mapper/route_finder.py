@@ -193,7 +193,6 @@ class RouteFinder:
             transit_type = "driving"
 
         # use of place_id makes the calls more efficient
-        # see https://developers.google.com/maps/documentation/directions/get-directions#Waypoints
         waypoints = [
             "place_id:" + mapping_dict[x]["place_id"]
             for x in mapping_dict
@@ -201,14 +200,6 @@ class RouteFinder:
         ]
         start = "place_id:" + mapping_dict["start"]["place_id"]
         end = "place_id:" + mapping_dict["end"]["place_id"]
-
-        # waypoints = [
-        #     mapping_dict[x]["place_id"]
-        #     for x in mapping_dict.keys()
-        #     if "waypoint" in x
-        # ]
-        # start = mapping_dict["start"]["formatted_address"]
-        # end = mapping_dict["end"]["formatted_address"]
 
         directions_result = self.gmaps.directions(
             start,
