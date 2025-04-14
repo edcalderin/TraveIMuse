@@ -12,7 +12,6 @@ from src.agents.locations import Trip
 from src.travel_mapper.route_mapper import RouteMapper
 
 load_dotenv()
-print(os.getenv("GOOGLE_MAPS_API_KEY"))
 
 
 class RouteFinder:
@@ -327,17 +326,6 @@ class RouteFinder:
 
     @staticmethod
     def sample_route_with_legs(route, distance_per_point_in_km=0.25):
-        """
-
-        Parameters
-        ----------
-        route
-        npoints
-
-        Returns
-        -------
-
-        """
         # get total distance
         all_distances = sum(
             [float(route[i]["distance"].split(" ")[0].replace(",", "")) for i in route]

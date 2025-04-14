@@ -34,8 +34,10 @@ class ItinerarySuggestion:
     def invoke(self, query: str) -> AgentResponse:
         query_input: dict = {"query": query}
         validation_result: Validation = self._validate_query(query_input)
-        if validation_result.plan_is_valid.lower()=="no":
-            return AgentResponse(itinerary=None, list_of_places=None, validation=validation_result)
+        if validation_result.plan_is_valid.lower() == "no":
+            return AgentResponse(
+                itinerary=None, list_of_places=None, validation=validation_result
+            )
 
         itinerary: str = self._generate_itinerary(query_input)
         list_of_places: Trip = self._extract_locations(itinerary)

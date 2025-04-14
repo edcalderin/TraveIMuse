@@ -6,14 +6,15 @@ from gradio_app.utils import (
 )
 from src.agents import ItinerarySuggestion
 from src.travel_mapper import RouteFinder
-class TravelMapperForUI:
 
+
+class TravelMapperForUI:
     def __init__(self) -> None:
         self._travel_agent: ItinerarySuggestion = ItinerarySuggestion()
         self._route_finder: RouteFinder = RouteFinder()
-        
+
     def generate_without_leafmap(self, query: str):
-        itinerary, list_of_places, validation = self._travel_agent.invoke(query)
+        itinerary, _, validation = self._travel_agent.invoke(query)
 
         # make validation message
         validation_string = validation_message(validation)
@@ -40,7 +41,7 @@ class TravelMapperForUI:
                 sampled_route,
                 mapping_dict,
             ) = self._route_finder.generate_route(
-                list_of_places=list_of_places, itinerary=itinerary, include_map=False
+                list_of_places=list_of_places, itinerary=itinerary, include_map=True
             )
 
             map_html = generate_leafmap(directions_list, sampled_route)
