@@ -1,12 +1,13 @@
 [project]
-name = "travei-itinerary-suggester"
+name = "travel-muse"
 version = "0.1.0"
-description = "Smart Travel Itinerary Suggester with LLM"
+description = "AI-Powered Itinerary Generator"
 authors = [
     {name = "Erick",email = "edcm.erick@gmail.com"}
 ]
 license = {text = "Apache License 2.0"}
 readme = "README.md"
+package-mode = false
 requires-python = ">3.12,<4.0"
 dependencies = [
     "langchain-core (>=0.3.49,<0.4.0)",
